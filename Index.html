@@ -1,0 +1,41 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online File Converter</title>
+</head>
+<body>
+    <h2>Online File Converter</h2>
+    <p>Select a file to convert:</p>
+    <input type="file" id="fileInput">
+    <br>
+    <label for="format">Choose format:</label>
+    <select id="format">
+        <option value="pdf">PDF</option>
+        <option value="jpg">JPG</option>
+        <option value="png">PNG</option>
+        <option value="mp3">MP3</option>
+        <option value="mp4">MP4</option>
+    </select>
+    <br>
+    <button onclick="convertFile()">Convert</button>
+    <p id="status"></p>
+
+    <script>
+        function convertFile() {
+            const file = document.getElementById('fileInput').files[0];
+            const format = document.getElementById('format').value;
+            if (!file) {
+                document.getElementById('status').innerText = "Please select a file.";
+                return;
+            }
+            document.getElementById('status').innerText = `Converting ${file.name} to ${format}...`;
+
+            setTimeout(() => {
+                document.getElementById('status').innerText = "Conversion completed! Download link will be available soon.";
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
